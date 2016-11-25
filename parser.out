@@ -1,0 +1,990 @@
+Created by PLY version 3.9 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    LESS
+    VOICEPROC
+    MOVEDOWNPROC
+    CONVFR
+    DATA
+    VISIONPROC
+    PIRS
+    MOVELEFTPROC
+    CONVTO
+    TYPEDEF
+    UNDEF
+    XZ
+    PINGUPPROC
+    ADIN
+    AND
+    MOVEUPPROC
+    MOVERIGHTPROC
+    MORE
+
+Grammar
+
+Rule 0     S' -> pred
+Rule 1     pred -> WHILEO expression WHILEZ
+Rule 2     pred -> FIGOPEN
+Rule 3     pred -> FIGCLOSE
+Rule 4     pred -> PROC NAME SKOBKVO argsType SKOBKVZ
+Rule 5     pred -> NAME EQUALS expression
+Rule 6     pred -> declarationVariable EQUALS expression
+Rule 7     pred -> declarationVariable
+Rule 8     pred -> expression
+Rule 9     declarationVariable -> TYPE NAME
+Rule 10    argsType -> <empty>
+Rule 11    argsType -> TYPE NAME
+Rule 12    argsType -> argsType ZAP TYPE NAME
+Rule 13    expression -> NAME SKOBKVO args SKOBKVZ
+Rule 14    args -> <empty>
+Rule 15    args -> expression
+Rule 16    args -> args ZAP expression
+Rule 17    expression -> expression LPLUS expression
+Rule 18    expression -> expression RPLUS expression
+Rule 19    expression -> expression MINUS expression
+Rule 20    expression -> expression TIMES expression
+Rule 21    expression -> expression DIVIDE expression
+Rule 22    expression -> MINUS expression
+Rule 23    expression -> LPAREN expression RPAREN
+Rule 24    expression -> NUMERIC
+Rule 25    expression -> NAME
+Rule 26    expression -> STRING
+Rule 27    expression -> LOGIC
+
+Terminals, with rules where they appear
+
+ADIN                 : 
+AND                  : 
+CONVFR               : 
+CONVTO               : 
+DATA                 : 
+DIVIDE               : 21
+EQUALS               : 5 6
+FIGCLOSE             : 3
+FIGOPEN              : 2
+LESS                 : 
+LOGIC                : 27
+LPAREN               : 23
+LPLUS                : 17
+MINUS                : 19 22
+MORE                 : 
+MOVEDOWNPROC         : 
+MOVELEFTPROC         : 
+MOVERIGHTPROC        : 
+MOVEUPPROC           : 
+NAME                 : 4 5 9 11 12 13 25
+NUMERIC              : 24
+PINGUPPROC           : 
+PIRS                 : 
+PROC                 : 4
+RPAREN               : 23
+RPLUS                : 18
+SKOBKVO              : 4 13
+SKOBKVZ              : 4 13
+STRING               : 26
+TIMES                : 20
+TYPE                 : 9 11 12
+TYPEDEF              : 
+UNDEF                : 
+VISIONPROC           : 
+VOICEPROC            : 
+WHILEO               : 1
+WHILEZ               : 1
+XZ                   : 
+ZAP                  : 12 16
+error                : 
+
+Nonterminals, with rules where they appear
+
+args                 : 13 16
+argsType             : 4 12
+declarationVariable  : 6 7
+expression           : 1 5 6 8 15 16 17 17 18 18 19 19 20 20 21 21 22 23
+pred                 : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . pred
+    (1) pred -> . WHILEO expression WHILEZ
+    (2) pred -> . FIGOPEN
+    (3) pred -> . FIGCLOSE
+    (4) pred -> . PROC NAME SKOBKVO argsType SKOBKVZ
+    (5) pred -> . NAME EQUALS expression
+    (6) pred -> . declarationVariable EQUALS expression
+    (7) pred -> . declarationVariable
+    (8) pred -> . expression
+    (9) declarationVariable -> . TYPE NAME
+    (13) expression -> . NAME SKOBKVO args SKOBKVZ
+    (17) expression -> . expression LPLUS expression
+    (18) expression -> . expression RPLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIVIDE expression
+    (22) expression -> . MINUS expression
+    (23) expression -> . LPAREN expression RPAREN
+    (24) expression -> . NUMERIC
+    (25) expression -> . NAME
+    (26) expression -> . STRING
+    (27) expression -> . LOGIC
+
+    WHILEO          shift and go to state 7
+    FIGOPEN         shift and go to state 13
+    FIGCLOSE        shift and go to state 8
+    PROC            shift and go to state 14
+    NAME            shift and go to state 10
+    TYPE            shift and go to state 11
+    MINUS           shift and go to state 2
+    LPAREN          shift and go to state 9
+    NUMERIC         shift and go to state 5
+    STRING          shift and go to state 3
+    LOGIC           shift and go to state 1
+
+    pred                           shift and go to state 4
+    declarationVariable            shift and go to state 6
+    expression                     shift and go to state 12
+
+state 1
+
+    (27) expression -> LOGIC .
+
+    LPLUS           reduce using rule 27 (expression -> LOGIC .)
+    RPLUS           reduce using rule 27 (expression -> LOGIC .)
+    MINUS           reduce using rule 27 (expression -> LOGIC .)
+    TIMES           reduce using rule 27 (expression -> LOGIC .)
+    DIVIDE          reduce using rule 27 (expression -> LOGIC .)
+    $end            reduce using rule 27 (expression -> LOGIC .)
+    WHILEZ          reduce using rule 27 (expression -> LOGIC .)
+    RPAREN          reduce using rule 27 (expression -> LOGIC .)
+    SKOBKVZ         reduce using rule 27 (expression -> LOGIC .)
+    ZAP             reduce using rule 27 (expression -> LOGIC .)
+
+
+state 2
+
+    (22) expression -> MINUS . expression
+    (13) expression -> . NAME SKOBKVO args SKOBKVZ
+    (17) expression -> . expression LPLUS expression
+    (18) expression -> . expression RPLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIVIDE expression
+    (22) expression -> . MINUS expression
+    (23) expression -> . LPAREN expression RPAREN
+    (24) expression -> . NUMERIC
+    (25) expression -> . NAME
+    (26) expression -> . STRING
+    (27) expression -> . LOGIC
+
+    NAME            shift and go to state 15
+    MINUS           shift and go to state 2
+    LPAREN          shift and go to state 9
+    NUMERIC         shift and go to state 5
+    STRING          shift and go to state 3
+    LOGIC           shift and go to state 1
+
+    expression                     shift and go to state 16
+
+state 3
+
+    (26) expression -> STRING .
+
+    LPLUS           reduce using rule 26 (expression -> STRING .)
+    RPLUS           reduce using rule 26 (expression -> STRING .)
+    MINUS           reduce using rule 26 (expression -> STRING .)
+    TIMES           reduce using rule 26 (expression -> STRING .)
+    DIVIDE          reduce using rule 26 (expression -> STRING .)
+    $end            reduce using rule 26 (expression -> STRING .)
+    WHILEZ          reduce using rule 26 (expression -> STRING .)
+    RPAREN          reduce using rule 26 (expression -> STRING .)
+    SKOBKVZ         reduce using rule 26 (expression -> STRING .)
+    ZAP             reduce using rule 26 (expression -> STRING .)
+
+
+state 4
+
+    (0) S' -> pred .
+
+
+
+state 5
+
+    (24) expression -> NUMERIC .
+
+    LPLUS           reduce using rule 24 (expression -> NUMERIC .)
+    RPLUS           reduce using rule 24 (expression -> NUMERIC .)
+    MINUS           reduce using rule 24 (expression -> NUMERIC .)
+    TIMES           reduce using rule 24 (expression -> NUMERIC .)
+    DIVIDE          reduce using rule 24 (expression -> NUMERIC .)
+    $end            reduce using rule 24 (expression -> NUMERIC .)
+    WHILEZ          reduce using rule 24 (expression -> NUMERIC .)
+    RPAREN          reduce using rule 24 (expression -> NUMERIC .)
+    SKOBKVZ         reduce using rule 24 (expression -> NUMERIC .)
+    ZAP             reduce using rule 24 (expression -> NUMERIC .)
+
+
+state 6
+
+    (6) pred -> declarationVariable . EQUALS expression
+    (7) pred -> declarationVariable .
+
+    EQUALS          shift and go to state 17
+    $end            reduce using rule 7 (pred -> declarationVariable .)
+
+
+state 7
+
+    (1) pred -> WHILEO . expression WHILEZ
+    (13) expression -> . NAME SKOBKVO args SKOBKVZ
+    (17) expression -> . expression LPLUS expression
+    (18) expression -> . expression RPLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIVIDE expression
+    (22) expression -> . MINUS expression
+    (23) expression -> . LPAREN expression RPAREN
+    (24) expression -> . NUMERIC
+    (25) expression -> . NAME
+    (26) expression -> . STRING
+    (27) expression -> . LOGIC
+
+    NAME            shift and go to state 15
+    MINUS           shift and go to state 2
+    LPAREN          shift and go to state 9
+    NUMERIC         shift and go to state 5
+    STRING          shift and go to state 3
+    LOGIC           shift and go to state 1
+
+    expression                     shift and go to state 18
+
+state 8
+
+    (3) pred -> FIGCLOSE .
+
+    $end            reduce using rule 3 (pred -> FIGCLOSE .)
+
+
+state 9
+
+    (23) expression -> LPAREN . expression RPAREN
+    (13) expression -> . NAME SKOBKVO args SKOBKVZ
+    (17) expression -> . expression LPLUS expression
+    (18) expression -> . expression RPLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIVIDE expression
+    (22) expression -> . MINUS expression
+    (23) expression -> . LPAREN expression RPAREN
+    (24) expression -> . NUMERIC
+    (25) expression -> . NAME
+    (26) expression -> . STRING
+    (27) expression -> . LOGIC
+
+    NAME            shift and go to state 15
+    MINUS           shift and go to state 2
+    LPAREN          shift and go to state 9
+    NUMERIC         shift and go to state 5
+    STRING          shift and go to state 3
+    LOGIC           shift and go to state 1
+
+    expression                     shift and go to state 19
+
+state 10
+
+    (5) pred -> NAME . EQUALS expression
+    (13) expression -> NAME . SKOBKVO args SKOBKVZ
+    (25) expression -> NAME .
+
+    EQUALS          shift and go to state 20
+    SKOBKVO         shift and go to state 21
+    LPLUS           reduce using rule 25 (expression -> NAME .)
+    RPLUS           reduce using rule 25 (expression -> NAME .)
+    MINUS           reduce using rule 25 (expression -> NAME .)
+    TIMES           reduce using rule 25 (expression -> NAME .)
+    DIVIDE          reduce using rule 25 (expression -> NAME .)
+    $end            reduce using rule 25 (expression -> NAME .)
+
+
+state 11
+
+    (9) declarationVariable -> TYPE . NAME
+
+    NAME            shift and go to state 22
+
+
+state 12
+
+    (8) pred -> expression .
+    (17) expression -> expression . LPLUS expression
+    (18) expression -> expression . RPLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIVIDE expression
+
+    $end            reduce using rule 8 (pred -> expression .)
+    LPLUS           shift and go to state 25
+    RPLUS           shift and go to state 26
+    MINUS           shift and go to state 27
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 23
+
+
+state 13
+
+    (2) pred -> FIGOPEN .
+
+    $end            reduce using rule 2 (pred -> FIGOPEN .)
+
+
+state 14
+
+    (4) pred -> PROC . NAME SKOBKVO argsType SKOBKVZ
+
+    NAME            shift and go to state 28
+
+
+state 15
+
+    (13) expression -> NAME . SKOBKVO args SKOBKVZ
+    (25) expression -> NAME .
+
+    SKOBKVO         shift and go to state 21
+    LPLUS           reduce using rule 25 (expression -> NAME .)
+    RPLUS           reduce using rule 25 (expression -> NAME .)
+    MINUS           reduce using rule 25 (expression -> NAME .)
+    TIMES           reduce using rule 25 (expression -> NAME .)
+    DIVIDE          reduce using rule 25 (expression -> NAME .)
+    $end            reduce using rule 25 (expression -> NAME .)
+    WHILEZ          reduce using rule 25 (expression -> NAME .)
+    RPAREN          reduce using rule 25 (expression -> NAME .)
+    SKOBKVZ         reduce using rule 25 (expression -> NAME .)
+    ZAP             reduce using rule 25 (expression -> NAME .)
+
+
+state 16
+
+    (22) expression -> MINUS expression .
+    (17) expression -> expression . LPLUS expression
+    (18) expression -> expression . RPLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIVIDE expression
+
+    LPLUS           reduce using rule 22 (expression -> MINUS expression .)
+    RPLUS           reduce using rule 22 (expression -> MINUS expression .)
+    MINUS           reduce using rule 22 (expression -> MINUS expression .)
+    TIMES           reduce using rule 22 (expression -> MINUS expression .)
+    DIVIDE          reduce using rule 22 (expression -> MINUS expression .)
+    $end            reduce using rule 22 (expression -> MINUS expression .)
+    WHILEZ          reduce using rule 22 (expression -> MINUS expression .)
+    RPAREN          reduce using rule 22 (expression -> MINUS expression .)
+    SKOBKVZ         reduce using rule 22 (expression -> MINUS expression .)
+    ZAP             reduce using rule 22 (expression -> MINUS expression .)
+
+  ! LPLUS           [ shift and go to state 25 ]
+  ! RPLUS           [ shift and go to state 26 ]
+  ! MINUS           [ shift and go to state 27 ]
+  ! TIMES           [ shift and go to state 24 ]
+  ! DIVIDE          [ shift and go to state 23 ]
+
+
+state 17
+
+    (6) pred -> declarationVariable EQUALS . expression
+    (13) expression -> . NAME SKOBKVO args SKOBKVZ
+    (17) expression -> . expression LPLUS expression
+    (18) expression -> . expression RPLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIVIDE expression
+    (22) expression -> . MINUS expression
+    (23) expression -> . LPAREN expression RPAREN
+    (24) expression -> . NUMERIC
+    (25) expression -> . NAME
+    (26) expression -> . STRING
+    (27) expression -> . LOGIC
+
+    NAME            shift and go to state 15
+    MINUS           shift and go to state 2
+    LPAREN          shift and go to state 9
+    NUMERIC         shift and go to state 5
+    STRING          shift and go to state 3
+    LOGIC           shift and go to state 1
+
+    expression                     shift and go to state 29
+
+state 18
+
+    (1) pred -> WHILEO expression . WHILEZ
+    (17) expression -> expression . LPLUS expression
+    (18) expression -> expression . RPLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIVIDE expression
+
+    WHILEZ          shift and go to state 30
+    LPLUS           shift and go to state 25
+    RPLUS           shift and go to state 26
+    MINUS           shift and go to state 27
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 23
+
+
+state 19
+
+    (23) expression -> LPAREN expression . RPAREN
+    (17) expression -> expression . LPLUS expression
+    (18) expression -> expression . RPLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIVIDE expression
+
+    RPAREN          shift and go to state 31
+    LPLUS           shift and go to state 25
+    RPLUS           shift and go to state 26
+    MINUS           shift and go to state 27
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 23
+
+
+state 20
+
+    (5) pred -> NAME EQUALS . expression
+    (13) expression -> . NAME SKOBKVO args SKOBKVZ
+    (17) expression -> . expression LPLUS expression
+    (18) expression -> . expression RPLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIVIDE expression
+    (22) expression -> . MINUS expression
+    (23) expression -> . LPAREN expression RPAREN
+    (24) expression -> . NUMERIC
+    (25) expression -> . NAME
+    (26) expression -> . STRING
+    (27) expression -> . LOGIC
+
+    NAME            shift and go to state 15
+    MINUS           shift and go to state 2
+    LPAREN          shift and go to state 9
+    NUMERIC         shift and go to state 5
+    STRING          shift and go to state 3
+    LOGIC           shift and go to state 1
+
+    expression                     shift and go to state 32
+
+state 21
+
+    (13) expression -> NAME SKOBKVO . args SKOBKVZ
+    (14) args -> .
+    (15) args -> . expression
+    (16) args -> . args ZAP expression
+    (13) expression -> . NAME SKOBKVO args SKOBKVZ
+    (17) expression -> . expression LPLUS expression
+    (18) expression -> . expression RPLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIVIDE expression
+    (22) expression -> . MINUS expression
+    (23) expression -> . LPAREN expression RPAREN
+    (24) expression -> . NUMERIC
+    (25) expression -> . NAME
+    (26) expression -> . STRING
+    (27) expression -> . LOGIC
+
+    SKOBKVZ         reduce using rule 14 (args -> .)
+    ZAP             reduce using rule 14 (args -> .)
+    NAME            shift and go to state 15
+    MINUS           shift and go to state 2
+    LPAREN          shift and go to state 9
+    NUMERIC         shift and go to state 5
+    STRING          shift and go to state 3
+    LOGIC           shift and go to state 1
+
+    args                           shift and go to state 33
+    expression                     shift and go to state 34
+
+state 22
+
+    (9) declarationVariable -> TYPE NAME .
+
+    EQUALS          reduce using rule 9 (declarationVariable -> TYPE NAME .)
+    $end            reduce using rule 9 (declarationVariable -> TYPE NAME .)
+
+
+state 23
+
+    (21) expression -> expression DIVIDE . expression
+    (13) expression -> . NAME SKOBKVO args SKOBKVZ
+    (17) expression -> . expression LPLUS expression
+    (18) expression -> . expression RPLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIVIDE expression
+    (22) expression -> . MINUS expression
+    (23) expression -> . LPAREN expression RPAREN
+    (24) expression -> . NUMERIC
+    (25) expression -> . NAME
+    (26) expression -> . STRING
+    (27) expression -> . LOGIC
+
+    NAME            shift and go to state 15
+    MINUS           shift and go to state 2
+    LPAREN          shift and go to state 9
+    NUMERIC         shift and go to state 5
+    STRING          shift and go to state 3
+    LOGIC           shift and go to state 1
+
+    expression                     shift and go to state 35
+
+state 24
+
+    (20) expression -> expression TIMES . expression
+    (13) expression -> . NAME SKOBKVO args SKOBKVZ
+    (17) expression -> . expression LPLUS expression
+    (18) expression -> . expression RPLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIVIDE expression
+    (22) expression -> . MINUS expression
+    (23) expression -> . LPAREN expression RPAREN
+    (24) expression -> . NUMERIC
+    (25) expression -> . NAME
+    (26) expression -> . STRING
+    (27) expression -> . LOGIC
+
+    NAME            shift and go to state 15
+    MINUS           shift and go to state 2
+    LPAREN          shift and go to state 9
+    NUMERIC         shift and go to state 5
+    STRING          shift and go to state 3
+    LOGIC           shift and go to state 1
+
+    expression                     shift and go to state 36
+
+state 25
+
+    (17) expression -> expression LPLUS . expression
+    (13) expression -> . NAME SKOBKVO args SKOBKVZ
+    (17) expression -> . expression LPLUS expression
+    (18) expression -> . expression RPLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIVIDE expression
+    (22) expression -> . MINUS expression
+    (23) expression -> . LPAREN expression RPAREN
+    (24) expression -> . NUMERIC
+    (25) expression -> . NAME
+    (26) expression -> . STRING
+    (27) expression -> . LOGIC
+
+    NAME            shift and go to state 15
+    MINUS           shift and go to state 2
+    LPAREN          shift and go to state 9
+    NUMERIC         shift and go to state 5
+    STRING          shift and go to state 3
+    LOGIC           shift and go to state 1
+
+    expression                     shift and go to state 37
+
+state 26
+
+    (18) expression -> expression RPLUS . expression
+    (13) expression -> . NAME SKOBKVO args SKOBKVZ
+    (17) expression -> . expression LPLUS expression
+    (18) expression -> . expression RPLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIVIDE expression
+    (22) expression -> . MINUS expression
+    (23) expression -> . LPAREN expression RPAREN
+    (24) expression -> . NUMERIC
+    (25) expression -> . NAME
+    (26) expression -> . STRING
+    (27) expression -> . LOGIC
+
+    NAME            shift and go to state 15
+    MINUS           shift and go to state 2
+    LPAREN          shift and go to state 9
+    NUMERIC         shift and go to state 5
+    STRING          shift and go to state 3
+    LOGIC           shift and go to state 1
+
+    expression                     shift and go to state 38
+
+state 27
+
+    (19) expression -> expression MINUS . expression
+    (13) expression -> . NAME SKOBKVO args SKOBKVZ
+    (17) expression -> . expression LPLUS expression
+    (18) expression -> . expression RPLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIVIDE expression
+    (22) expression -> . MINUS expression
+    (23) expression -> . LPAREN expression RPAREN
+    (24) expression -> . NUMERIC
+    (25) expression -> . NAME
+    (26) expression -> . STRING
+    (27) expression -> . LOGIC
+
+    NAME            shift and go to state 15
+    MINUS           shift and go to state 2
+    LPAREN          shift and go to state 9
+    NUMERIC         shift and go to state 5
+    STRING          shift and go to state 3
+    LOGIC           shift and go to state 1
+
+    expression                     shift and go to state 39
+
+state 28
+
+    (4) pred -> PROC NAME . SKOBKVO argsType SKOBKVZ
+
+    SKOBKVO         shift and go to state 40
+
+
+state 29
+
+    (6) pred -> declarationVariable EQUALS expression .
+    (17) expression -> expression . LPLUS expression
+    (18) expression -> expression . RPLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIVIDE expression
+
+    $end            reduce using rule 6 (pred -> declarationVariable EQUALS expression .)
+    LPLUS           shift and go to state 25
+    RPLUS           shift and go to state 26
+    MINUS           shift and go to state 27
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 23
+
+
+state 30
+
+    (1) pred -> WHILEO expression WHILEZ .
+
+    $end            reduce using rule 1 (pred -> WHILEO expression WHILEZ .)
+
+
+state 31
+
+    (23) expression -> LPAREN expression RPAREN .
+
+    LPLUS           reduce using rule 23 (expression -> LPAREN expression RPAREN .)
+    RPLUS           reduce using rule 23 (expression -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 23 (expression -> LPAREN expression RPAREN .)
+    TIMES           reduce using rule 23 (expression -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 23 (expression -> LPAREN expression RPAREN .)
+    $end            reduce using rule 23 (expression -> LPAREN expression RPAREN .)
+    WHILEZ          reduce using rule 23 (expression -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 23 (expression -> LPAREN expression RPAREN .)
+    SKOBKVZ         reduce using rule 23 (expression -> LPAREN expression RPAREN .)
+    ZAP             reduce using rule 23 (expression -> LPAREN expression RPAREN .)
+
+
+state 32
+
+    (5) pred -> NAME EQUALS expression .
+    (17) expression -> expression . LPLUS expression
+    (18) expression -> expression . RPLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIVIDE expression
+
+    $end            reduce using rule 5 (pred -> NAME EQUALS expression .)
+    LPLUS           shift and go to state 25
+    RPLUS           shift and go to state 26
+    MINUS           shift and go to state 27
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 23
+
+
+state 33
+
+    (13) expression -> NAME SKOBKVO args . SKOBKVZ
+    (16) args -> args . ZAP expression
+
+    SKOBKVZ         shift and go to state 41
+    ZAP             shift and go to state 42
+
+
+state 34
+
+    (15) args -> expression .
+    (17) expression -> expression . LPLUS expression
+    (18) expression -> expression . RPLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIVIDE expression
+
+    SKOBKVZ         reduce using rule 15 (args -> expression .)
+    ZAP             reduce using rule 15 (args -> expression .)
+    LPLUS           shift and go to state 25
+    RPLUS           shift and go to state 26
+    MINUS           shift and go to state 27
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 23
+
+
+state 35
+
+    (21) expression -> expression DIVIDE expression .
+    (17) expression -> expression . LPLUS expression
+    (18) expression -> expression . RPLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIVIDE expression
+
+    LPLUS           reduce using rule 21 (expression -> expression DIVIDE expression .)
+    RPLUS           reduce using rule 21 (expression -> expression DIVIDE expression .)
+    MINUS           reduce using rule 21 (expression -> expression DIVIDE expression .)
+    TIMES           reduce using rule 21 (expression -> expression DIVIDE expression .)
+    DIVIDE          reduce using rule 21 (expression -> expression DIVIDE expression .)
+    $end            reduce using rule 21 (expression -> expression DIVIDE expression .)
+    WHILEZ          reduce using rule 21 (expression -> expression DIVIDE expression .)
+    RPAREN          reduce using rule 21 (expression -> expression DIVIDE expression .)
+    SKOBKVZ         reduce using rule 21 (expression -> expression DIVIDE expression .)
+    ZAP             reduce using rule 21 (expression -> expression DIVIDE expression .)
+
+  ! LPLUS           [ shift and go to state 25 ]
+  ! RPLUS           [ shift and go to state 26 ]
+  ! MINUS           [ shift and go to state 27 ]
+  ! TIMES           [ shift and go to state 24 ]
+  ! DIVIDE          [ shift and go to state 23 ]
+
+
+state 36
+
+    (20) expression -> expression TIMES expression .
+    (17) expression -> expression . LPLUS expression
+    (18) expression -> expression . RPLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIVIDE expression
+
+    LPLUS           reduce using rule 20 (expression -> expression TIMES expression .)
+    RPLUS           reduce using rule 20 (expression -> expression TIMES expression .)
+    MINUS           reduce using rule 20 (expression -> expression TIMES expression .)
+    TIMES           reduce using rule 20 (expression -> expression TIMES expression .)
+    DIVIDE          reduce using rule 20 (expression -> expression TIMES expression .)
+    $end            reduce using rule 20 (expression -> expression TIMES expression .)
+    WHILEZ          reduce using rule 20 (expression -> expression TIMES expression .)
+    RPAREN          reduce using rule 20 (expression -> expression TIMES expression .)
+    SKOBKVZ         reduce using rule 20 (expression -> expression TIMES expression .)
+    ZAP             reduce using rule 20 (expression -> expression TIMES expression .)
+
+  ! LPLUS           [ shift and go to state 25 ]
+  ! RPLUS           [ shift and go to state 26 ]
+  ! MINUS           [ shift and go to state 27 ]
+  ! TIMES           [ shift and go to state 24 ]
+  ! DIVIDE          [ shift and go to state 23 ]
+
+
+state 37
+
+    (17) expression -> expression LPLUS expression .
+    (17) expression -> expression . LPLUS expression
+    (18) expression -> expression . RPLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIVIDE expression
+
+    LPLUS           reduce using rule 17 (expression -> expression LPLUS expression .)
+    RPLUS           reduce using rule 17 (expression -> expression LPLUS expression .)
+    MINUS           reduce using rule 17 (expression -> expression LPLUS expression .)
+    $end            reduce using rule 17 (expression -> expression LPLUS expression .)
+    WHILEZ          reduce using rule 17 (expression -> expression LPLUS expression .)
+    RPAREN          reduce using rule 17 (expression -> expression LPLUS expression .)
+    SKOBKVZ         reduce using rule 17 (expression -> expression LPLUS expression .)
+    ZAP             reduce using rule 17 (expression -> expression LPLUS expression .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 23
+
+  ! TIMES           [ reduce using rule 17 (expression -> expression LPLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 17 (expression -> expression LPLUS expression .) ]
+  ! LPLUS           [ shift and go to state 25 ]
+  ! RPLUS           [ shift and go to state 26 ]
+  ! MINUS           [ shift and go to state 27 ]
+
+
+state 38
+
+    (18) expression -> expression RPLUS expression .
+    (17) expression -> expression . LPLUS expression
+    (18) expression -> expression . RPLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIVIDE expression
+
+    LPLUS           reduce using rule 18 (expression -> expression RPLUS expression .)
+    RPLUS           reduce using rule 18 (expression -> expression RPLUS expression .)
+    MINUS           reduce using rule 18 (expression -> expression RPLUS expression .)
+    $end            reduce using rule 18 (expression -> expression RPLUS expression .)
+    WHILEZ          reduce using rule 18 (expression -> expression RPLUS expression .)
+    RPAREN          reduce using rule 18 (expression -> expression RPLUS expression .)
+    SKOBKVZ         reduce using rule 18 (expression -> expression RPLUS expression .)
+    ZAP             reduce using rule 18 (expression -> expression RPLUS expression .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 23
+
+  ! TIMES           [ reduce using rule 18 (expression -> expression RPLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 18 (expression -> expression RPLUS expression .) ]
+  ! LPLUS           [ shift and go to state 25 ]
+  ! RPLUS           [ shift and go to state 26 ]
+  ! MINUS           [ shift and go to state 27 ]
+
+
+state 39
+
+    (19) expression -> expression MINUS expression .
+    (17) expression -> expression . LPLUS expression
+    (18) expression -> expression . RPLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIVIDE expression
+
+    LPLUS           reduce using rule 19 (expression -> expression MINUS expression .)
+    RPLUS           reduce using rule 19 (expression -> expression MINUS expression .)
+    MINUS           reduce using rule 19 (expression -> expression MINUS expression .)
+    $end            reduce using rule 19 (expression -> expression MINUS expression .)
+    WHILEZ          reduce using rule 19 (expression -> expression MINUS expression .)
+    RPAREN          reduce using rule 19 (expression -> expression MINUS expression .)
+    SKOBKVZ         reduce using rule 19 (expression -> expression MINUS expression .)
+    ZAP             reduce using rule 19 (expression -> expression MINUS expression .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 23
+
+  ! TIMES           [ reduce using rule 19 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 19 (expression -> expression MINUS expression .) ]
+  ! LPLUS           [ shift and go to state 25 ]
+  ! RPLUS           [ shift and go to state 26 ]
+  ! MINUS           [ shift and go to state 27 ]
+
+
+state 40
+
+    (4) pred -> PROC NAME SKOBKVO . argsType SKOBKVZ
+    (10) argsType -> .
+    (11) argsType -> . TYPE NAME
+    (12) argsType -> . argsType ZAP TYPE NAME
+
+    SKOBKVZ         reduce using rule 10 (argsType -> .)
+    ZAP             reduce using rule 10 (argsType -> .)
+    TYPE            shift and go to state 43
+
+    argsType                       shift and go to state 44
+
+state 41
+
+    (13) expression -> NAME SKOBKVO args SKOBKVZ .
+
+    LPLUS           reduce using rule 13 (expression -> NAME SKOBKVO args SKOBKVZ .)
+    RPLUS           reduce using rule 13 (expression -> NAME SKOBKVO args SKOBKVZ .)
+    MINUS           reduce using rule 13 (expression -> NAME SKOBKVO args SKOBKVZ .)
+    TIMES           reduce using rule 13 (expression -> NAME SKOBKVO args SKOBKVZ .)
+    DIVIDE          reduce using rule 13 (expression -> NAME SKOBKVO args SKOBKVZ .)
+    $end            reduce using rule 13 (expression -> NAME SKOBKVO args SKOBKVZ .)
+    WHILEZ          reduce using rule 13 (expression -> NAME SKOBKVO args SKOBKVZ .)
+    RPAREN          reduce using rule 13 (expression -> NAME SKOBKVO args SKOBKVZ .)
+    SKOBKVZ         reduce using rule 13 (expression -> NAME SKOBKVO args SKOBKVZ .)
+    ZAP             reduce using rule 13 (expression -> NAME SKOBKVO args SKOBKVZ .)
+
+
+state 42
+
+    (16) args -> args ZAP . expression
+    (13) expression -> . NAME SKOBKVO args SKOBKVZ
+    (17) expression -> . expression LPLUS expression
+    (18) expression -> . expression RPLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIVIDE expression
+    (22) expression -> . MINUS expression
+    (23) expression -> . LPAREN expression RPAREN
+    (24) expression -> . NUMERIC
+    (25) expression -> . NAME
+    (26) expression -> . STRING
+    (27) expression -> . LOGIC
+
+    NAME            shift and go to state 15
+    MINUS           shift and go to state 2
+    LPAREN          shift and go to state 9
+    NUMERIC         shift and go to state 5
+    STRING          shift and go to state 3
+    LOGIC           shift and go to state 1
+
+    expression                     shift and go to state 45
+
+state 43
+
+    (11) argsType -> TYPE . NAME
+
+    NAME            shift and go to state 46
+
+
+state 44
+
+    (4) pred -> PROC NAME SKOBKVO argsType . SKOBKVZ
+    (12) argsType -> argsType . ZAP TYPE NAME
+
+    SKOBKVZ         shift and go to state 47
+    ZAP             shift and go to state 48
+
+
+state 45
+
+    (16) args -> args ZAP expression .
+    (17) expression -> expression . LPLUS expression
+    (18) expression -> expression . RPLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIVIDE expression
+
+    SKOBKVZ         reduce using rule 16 (args -> args ZAP expression .)
+    ZAP             reduce using rule 16 (args -> args ZAP expression .)
+    LPLUS           shift and go to state 25
+    RPLUS           shift and go to state 26
+    MINUS           shift and go to state 27
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 23
+
+
+state 46
+
+    (11) argsType -> TYPE NAME .
+
+    SKOBKVZ         reduce using rule 11 (argsType -> TYPE NAME .)
+    ZAP             reduce using rule 11 (argsType -> TYPE NAME .)
+
+
+state 47
+
+    (4) pred -> PROC NAME SKOBKVO argsType SKOBKVZ .
+
+    $end            reduce using rule 4 (pred -> PROC NAME SKOBKVO argsType SKOBKVZ .)
+
+
+state 48
+
+    (12) argsType -> argsType ZAP . TYPE NAME
+
+    TYPE            shift and go to state 49
+
+
+state 49
+
+    (12) argsType -> argsType ZAP TYPE . NAME
+
+    NAME            shift and go to state 50
+
+
+state 50
+
+    (12) argsType -> argsType ZAP TYPE NAME .
+
+    SKOBKVZ         reduce using rule 12 (argsType -> argsType ZAP TYPE NAME .)
+    ZAP             reduce using rule 12 (argsType -> argsType ZAP TYPE NAME .)
+
